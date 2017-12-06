@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerTrigger : MonoBehaviour {
     
@@ -15,6 +16,11 @@ public class PlayerTrigger : MonoBehaviour {
         if (triggerCollider.tag == "enemy")
         {
             Destroy(this);
+        }
+
+        if (triggerCollider.tag == "Goal")
+        {
+            SceneManager.LoadScene("Lvls", LoadSceneMode.Single);
         }
 
     }
