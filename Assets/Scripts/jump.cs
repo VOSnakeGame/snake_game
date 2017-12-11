@@ -10,6 +10,7 @@ public class jump : MonoBehaviour {
     public Transform target;
     public Rigidbody rigidbody;
 
+
     // Use this for initialization
     void Start()
     {
