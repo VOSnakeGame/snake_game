@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -10,17 +11,18 @@ public class Player : MonoBehaviour {
     public float moveForce = 365f;
     public float maxSpeed = 5f;
     public float jumpForce = 1000f;
-
     private bool jump = false;
-
     public float fallMultiplier = 2f;
     public float lowJumpMultiplier = 2.5f;
-
     private float distToGround;
+    public GameObject sarma;
+    public GameObject goal;
 
     void Start () {
         rb = GetComponent<Rigidbody>();
         distToGround = GetComponent<Collider>().bounds.extents.y;
+        sarma =  GameObject.FindGameObjectsWithTag("Sarma")[0];
+        goal.GetComponent<Collider>().enabled = false;
     }
 	
 	void Update () {
@@ -48,6 +50,38 @@ public class Player : MonoBehaviour {
             rb.velocity += Vector3.up * jumpForce;
             jump = false;
         }
+    }
+
+    void OnCollisionEnter(Collision collision) {
+     
+        if (collision.collider.tag == "Kills") {           
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            OpenGameOver();
+        }
+
+        if (collision.collider.tag == "Goal") {            
+            SceneManager.LoadScene("Lvls", LoadSceneMode.Single);
+        }
+    }
+
+    void OnTriggerEnter(Collider triggerCollider) 
+    {
+        Debug.Log(triggerCollider.tag);
+        if (triggerCollider.tag == "kupus" || triggerCollider.tag == "mljeveno meso"
+            || triggerCollider.tag == "spek" || triggerCollider.tag == "luk")
+        {
+            // write that i collected it
+            Destroy (triggerCollider.gameObject);
+            Component[] sarmaComponents = sarma.GetComponentsInChildren<Transform>();        
+            if (sarmaComponents.Length <= 2) {
+                goal.GetComponent<Collider>().enabled = true;
+            }
+        }
+
+    }
+
+    public void OpenGameOver() {
+        FindObjectOfType<ManageGame>().OnGameOver();
     }
 
 }

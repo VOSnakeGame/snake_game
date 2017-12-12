@@ -33,11 +33,6 @@ public class SceneLoader : MonoBehaviour {
         }
         
     }
-
-    void onClick(Button button)
-    {
-       
-    }
     
     void BackScene()
     {

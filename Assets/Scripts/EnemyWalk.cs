@@ -25,8 +25,7 @@ public class EnemyWalk : MonoBehaviour {
 	void OnTriggerEnter(Collider triggerCollider) 
 	{
 		if (triggerCollider.tag == "Boundary")
-		{
-			Debug.Log ("Collision!");
+		{		
 			direction.x = -direction.x;
 		}
 
