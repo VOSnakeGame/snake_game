@@ -4,35 +4,42 @@ using UnityEngine;
 
 public class EnemyJump : MonoBehaviour {
 
-	public float speed;
-	Transform myTransform;
-	public Transform playerTransform;
+	public float moveForce = 365f;
 	private Vector3 direction;
-	private Rigidbody rb;
+	public Rigidbody rb;
 	private float timer;
-	private Vector3 jumpForce;
+	public float jumpForce = 20f;
+	public float maxSpeed = 10f;
+	public float fallMultiplier = 2f;
+	public float lowJumpMultiplier = 2.5f;
 
 	// Use this for initialization
 	void Start () {
-		myTransform = GetComponent<Transform>();
 		rb = GetComponent<Rigidbody>();
-		playerTransform = GameObject.FindGameObjectsWithTag("Player")[0].transform;
 		direction = new Vector3(1, 0, 0);
 		timer = 0;
-		jumpForce = new Vector3(0f, 15f, 0f);
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		//myTransform.Translate(direction * speed * Time.deltaTime);
-		rb.AddForce(direction * speed * Time.deltaTime);
+	void FixedUpdate () {
+		rb.AddForce(direction * moveForce);
 
 		timer += Time.deltaTime;
 		Debug.Log (timer);
-		if (timer >= 1.5f) {
+		if (timer >= 1.0f) {
 			timer = 0;
 			jump();
 		}
+
+		if (Mathf.Abs(rb.velocity.x) > maxSpeed)
+			rb.velocity = new Vector3(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y, 0);
+		
+		if (rb.velocity.y < 0) {
+			rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+		} else {
+			rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
+		}
+		Debug.Log(rb.velocity);
 	}
 
 	void OnTriggerEnter(Collider triggerCollider) 
@@ -41,11 +48,14 @@ public class EnemyJump : MonoBehaviour {
 		{
 			Debug.Log ("Collision!");
 			direction.x = -direction.x;
+			rb.velocity = new Vector3 (0, rb.velocity.y, 0);
 		}
 
 	}
 
 	void jump() {
-		rb.AddForce(jumpForce);
+		Debug.Log("jump");
+		rb.AddForce(Vector3.up * jumpForce);
+		Debug.Log (rb.velocity);
 	}
 }
