@@ -13,7 +13,7 @@ public class PlayerTrigger : MonoBehaviour {
             Destroy (triggerCollider.gameObject);
         }
 
-        if (triggerCollider.tag == "enemy")
+        if (triggerCollider.tag == "enemy" || triggerCollider.tag == "spikes")
         {
             Destroy(this);
         }

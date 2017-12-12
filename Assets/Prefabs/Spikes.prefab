@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 95147844053905764}
   m_Layer: 0
   m_Name: Spikes
-  m_TagString: Untagged
+  m_TagString: spikes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +154,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616873399407478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.887372, y: 0, z: -0.62002563}
+  m_LocalPosition: {x: -11.39, y: 2.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4018871361552502}
@@ -178,7 +178,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 89f8edfba483724498f4a487eab71da7, type: 2}
+  - {fileID: 2100000, guid: 10601278f754bcc419c4ce7981e6b0d9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -212,7 +212,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 89f8edfba483724498f4a487eab71da7, type: 2}
+  - {fileID: 2100000, guid: 10601278f754bcc419c4ce7981e6b0d9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -246,7 +246,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 89f8edfba483724498f4a487eab71da7, type: 2}
+  - {fileID: 2100000, guid: 10601278f754bcc419c4ce7981e6b0d9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -280,7 +280,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 89f8edfba483724498f4a487eab71da7, type: 2}
+  - {fileID: 2100000, guid: 10601278f754bcc419c4ce7981e6b0d9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
