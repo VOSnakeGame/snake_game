@@ -15,14 +15,14 @@ public class Player : MonoBehaviour {
     public float fallMultiplier = 2f;
     public float lowJumpMultiplier = 2.5f;
     private float distToGround;
-    public GameObject sarma;
-    public GameObject goal;
+    public int sarmaCounter;
+    public bool goal;
 
     void Start () {
         rb = GetComponent<Rigidbody>();
         distToGround = GetComponent<Collider>().bounds.extents.y;
-        sarma =  GameObject.FindGameObjectsWithTag("Sarma")[0];
-        goal.GetComponent<Collider>().enabled = false;
+        sarmaCounter = 0;
+        goal = false;
     }
 	
 	void Update () {
@@ -59,8 +59,10 @@ public class Player : MonoBehaviour {
             OpenGameOver();
         }
 
-        if (collision.collider.tag == "Goal") {            
-            SceneManager.LoadScene("Lvls", LoadSceneMode.Single);
+        if (collision.collider.tag == "Goal") {  
+            if (goal) {
+                SceneManager.LoadScene("Lvls", LoadSceneMode.Single);
+            }
         }
     }
 
@@ -72,9 +74,9 @@ public class Player : MonoBehaviour {
         {
             // write that i collected it
             Destroy (triggerCollider.gameObject);
-            Component[] sarmaComponents = sarma.GetComponentsInChildren<Transform>();        
-            if (sarmaComponents.Length <= 2) {
-                goal.GetComponent<Collider>().enabled = true;
+            sarmaCounter++;        
+            if (sarmaCounter == 4) {
+               goal = true;
             }
         }
 
