@@ -18,6 +18,9 @@ public class Player : MonoBehaviour {
     public int sarmaCounter;
     public bool goal;
 
+    public Animator animator;
+    private float orientation = 1f;
+
     void Start () {
         rb = GetComponent<Rigidbody>();
         distToGround = GetComponent<Collider>().bounds.extents.y;
@@ -34,6 +37,14 @@ public class Player : MonoBehaviour {
     void FixedUpdate() {
         float h = Input.GetAxis("Horizontal");
 
+        if (h != 0) {
+            orientation = Mathf.Sign(h);
+        }
+
+        transform.localScale = new Vector3(orientation, 1, 1);
+
+        animator.SetBool("Walk", rb.velocity.x != 0);
+
         if (h * rb.velocity.x < maxSpeed)
             rb.AddForce(Vector3.right * h * moveForce);
 
@@ -45,7 +56,9 @@ public class Player : MonoBehaviour {
         } else {
             rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
         }
-        
+
+        animator.SetBool("Walk", rb.velocity.x != 0);
+
         if (jump) {
             rb.velocity += Vector3.up * jumpForce;
             jump = false;
