@@ -4,58 +4,36 @@ using UnityEngine;
 
 public class EnemyJump : MonoBehaviour {
 
-	public float moveForce = 365f;
-	private Vector3 direction;
-	public Rigidbody rb;
-	private float timer;
-	public float jumpForce = 20f;
-	public float maxSpeed = 10f;
-	public float fallMultiplier = 2f;
-	public float lowJumpMultiplier = 2.5f;
+	Rigidbody rb;
+    public float maxSpeed = 5f;
+    public float jumpForce = 1f;
+    private bool jump = false;
+    public float fallMultiplier = 2f;
+    private float distToGround;
+    private float orientation = 1f;
 
-	// Use this for initialization
-	void Start () {
-		rb = GetComponent<Rigidbody>();
-		direction = new Vector3(1, 0, 0);
-		timer = 0;
-	}
+    void Start () {
+        rb = GetComponent<Rigidbody>();
+        distToGround = GetComponent<Collider>().bounds.extents.y;
+    }
 	
-	// Update is called once per frame
-	void FixedUpdate () {
-		rb.AddForce(direction * moveForce);
+	void Update () {
+        if (Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f)) {
+            jump = true;
+        }
+    }
 
-		timer += Time.deltaTime;
-		Debug.Log (timer);
-		if (timer >= 1.0f) {
-			timer = 0;
-			jump();
-		}
+    void FixedUpdate() {
 
-		if (Mathf.Abs(rb.velocity.x) > maxSpeed)
-			rb.velocity = new Vector3(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y, 0);
-		
-		if (rb.velocity.y < 0) {
-			rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
-		} else {
-			rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
-		}
-		Debug.Log(rb.velocity);
-	}
+        transform.localScale = new Vector3(orientation, 1, 1);
 
-	void OnTriggerEnter(Collider triggerCollider) 
-	{
-		if (triggerCollider.tag == "Boundary")
-		{
-			Debug.Log ("Collision!");
-			direction.x = -direction.x;
-			rb.velocity = new Vector3 (0, rb.velocity.y, 0);
-		}
+        if (rb.velocity.y < 0) {
+            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+        } 
 
-	}
-
-	void jump() {
-		Debug.Log("jump");
-		rb.AddForce(Vector3.up * jumpForce);
-		Debug.Log (rb.velocity);
-	}
+        if (jump) {
+            rb.velocity += Vector3.up * jumpForce;
+            jump = false;
+        }
+    }
 }
