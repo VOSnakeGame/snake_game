@@ -44,3 +44,6 @@ Thumbs.db
 # IGOR VOLI PUSHAT BUILD
 *.exe
 *_Data
+
+# LIB folder ide na google drive jer je velik
+Assets/lib/
