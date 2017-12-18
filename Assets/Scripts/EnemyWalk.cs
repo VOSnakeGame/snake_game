@@ -6,13 +6,11 @@ public class EnemyWalk : MonoBehaviour {
 
     public float speed;
     Transform myTransform;
-    public Transform playerTransform;
     private Vector3 direction;
 
     // Use this for initialization
     void Start() {
         myTransform = GetComponent<Transform>();
-        playerTransform = GameObject.FindGameObjectsWithTag("Player")[0].transform;
         direction = new Vector3(1, 0, 0);
     }
 
@@ -20,6 +18,7 @@ public class EnemyWalk : MonoBehaviour {
     void Update()
     {
 		myTransform.Translate(direction * speed * Time.deltaTime);
+        myTransform.localScale = new Vector3(direction.x, 1, 1);
     }
 
 	void OnTriggerEnter(Collider triggerCollider) 
