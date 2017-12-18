@@ -1388,19 +1388,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 1141227483755276, guid: 69cc62ad4ea541847a5a1096006ed251, type: 2}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1415617138395288, guid: 69cc62ad4ea541847a5a1096006ed251, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 223972937773942228, guid: 69cc62ad4ea541847a5a1096006ed251,
-        type: 2}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 743886978}
     - target: {fileID: 224043469507044366, guid: 69cc62ad4ea541847a5a1096006ed251,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1411,6 +1398,11 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: -6.1776123
       objectReference: {fileID: 0}
+    - target: {fileID: 223972937773942228, guid: 69cc62ad4ea541847a5a1096006ed251,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 743886978}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69cc62ad4ea541847a5a1096006ed251, type: 2}
   m_IsPrefabParent: 0
