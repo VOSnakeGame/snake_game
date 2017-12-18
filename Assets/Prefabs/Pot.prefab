@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 136326095671441276}
   - component: {fileID: 23060416185502786}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Pot
   m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
