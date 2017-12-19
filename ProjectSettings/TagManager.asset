@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Platform
+  - Boundary
+  - spek
+  - mljeveno meso
+  - enemy
+  - luk
+  - Floor
+  - kupus
+  - Goal
+  - spikes
+  - Kills
+  - Sarma
   layers:
   - Default
   - TransparentFX

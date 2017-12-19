@@ -27,6 +27,7 @@ sysinfo.txt
 *.userprefs
 *.pidb
 .DS_Store
+.vs
 
 ###
 # OS generated
@@ -39,3 +40,10 @@ sysinfo.txt
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# IGOR VOLI PUSHAT BUILD
+*.exe
+*_Data
+
+# LIB folder ide na google drive jer je velik
+Assets/lib/
