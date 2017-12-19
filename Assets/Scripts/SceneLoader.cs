@@ -21,7 +21,7 @@ public class SceneLoader : MonoBehaviour {
         if (Input.GetMouseButton(0))
         {
             string name = EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text;
-            Debug.Log("Clicked button: " + name);
+
             if (name.Contains("Nazad"))
             {
                 BackScene();

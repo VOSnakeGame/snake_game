@@ -11,10 +11,8 @@ public class MainMenuBtns : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Button playBtnClick = playBtn.GetComponent<Button>();
-        Button quitBtnClick = playBtn.GetComponent<Button>();
-        playBtnClick.onClick.AddListener(OpenLvlsListener);
-        quitBtnClick.onClick.AddListener(QuitGameListener);
+        playBtn.onClick.AddListener(OpenLvlsListener);
+        quitBtn.onClick.AddListener(QuitGameListener);
     }
 	
 	// Update is called once per frame
